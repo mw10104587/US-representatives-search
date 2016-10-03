@@ -1,0 +1,105 @@
+.container{
+	width: 100%;
+}
+
+.h-center{
+	margin: auto;
+	display: table;
+}
+
+.question{
+	font-size: 25px;
+	margin-bottom: 15px;
+}
+
+
+/* Section 1 */
+
+#address-input{
+	width: 500px;
+}
+
+.hide-form{
+	visibility: none;
+}
+
+#include-offices-wrap span{
+	margin-left: 4px;
+}
+
+
+/* Section 2 */
+
+#section2-container{
+	width: 600px;
+	margin: auto;
+}
+
+#level-grid{
+	margin-top: 30px;
+}
+
+.level{
+	height: 50px;
+	padding-left: 20px;
+}
+
+.level:hover{
+	cursor: pointer;
+}
+
+.level-content{
+	display: table;
+    margin-left: 34px;
+    font-size: 17px;
+    font-family: helvatica;
+    margin-top: 12px;
+}
+
+
+.level-icon{
+	display: table;
+    float: left;
+    width: 24px;
+    margin-top: 10px;
+}
+
+.level-icon img{
+	width: 100%;
+}
+
+/* a class to make margin-top between content and submit button */
+.button-wrap{
+	margin-top: 45px;
+}
+
+#levels-btn{
+	width: 130px;
+}
+
+
+
+/* Section 3 */
+#section3-container{
+	width: 600px;
+	margin: auto;
+}
+
+#role-grid{
+	margin-top: 15px;
+}
+
+.role{
+	height: 50px;
+	padding-left: 20px;	
+}
+
+.role:hover{
+	cursor: pointer;
+}
+
+
+#roles-btn{
+	width: 290px;
+}
+

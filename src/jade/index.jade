@@ -1,0 +1,22 @@
+doctype html
+html
+	head
+
+		// inject:css
+		// endinject
+		link(rel='stylesheet', type='text/css' ,href='css/index.css')
+	body
+		
+		// inject:js
+		// endinject
+
+		script(src='js/index.js')
+
+		div.container
+			div#fullpage
+				div.section
+					include address.jade
+				div#address-section.section
+					include levels.jade
+				div#roles-section.section
+					include roles.jade

@@ -1,0 +1,40 @@
+doctype html
+html
+	head
+		//inject:css
+		//endinject
+
+		link(href="css/result.css" rel="stylesheet")
+		//- link(href="https://fonts.googleapis.com/css?family=Alegreya|Roboto+Condensed" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Alegreya|News+Cycle|Roboto+Condensed" rel="stylesheet")
+	body
+		//inject:js
+		//endinject
+		script(src='js/result.js')
+
+		div#tab
+			button#officials-tab.btn.btn-link(type="button") Officials
+			span.include-offices |
+			button#offices-tab.btn.btn-link.include-offices(type="button") Offices
+		div#officials-table.data-table
+		div#offices-table.data-table
+			table.table.table-hover
+				thead
+					tr
+						th Office Name
+						th Addres
+						th levels
+						th roles
+				tbody
+
+		div#more-officials-wrap
+			button.btn.btn-link(type='button') Show me more
+		div#more-offices-wrap
+			div.center
+				button.btn.btn-link(type='button') Show me more
+
+
+		div#back-wrap
+			div.center
+				button.btn.btn-info(type='button') Do Another Search
+

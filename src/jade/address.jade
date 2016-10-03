@@ -1,0 +1,15 @@
+
+div.row
+	div.h-center
+		div.col-lg-12
+			div.question You should care about officials and offices in your area
+			form#address-form(autocomplete='off')
+				div#address-input.input-group
+					input.form-control(placeHolder='Please enter your address', type='text', autocomplete="street-address")
+					//- input.hide-form.form-control(placeHolder='City', type='text', autocomplete="address-level2")
+					span.input-group-btn
+						button.btn.btn-default Go!
+				div#include-offices-wrap.check-box
+					label
+						input(type='checkbox')
+						span Show me information about offices as well

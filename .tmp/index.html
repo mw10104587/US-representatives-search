@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- inject:css-->
+    <link rel="stylesheet" href="/vendor/fullpage.js/dist/jquery.fullpage.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <!-- endinject-->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+  </head>
+  <body>
+    <!-- inject:js-->
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/react/react-with-addons.js"></script>
+    <script src="/vendor/react/react-dom.js"></script>
+    <script src="/vendor/d3/d3.js"></script>
+    <script src="/vendor/fullpage.js/dist/jquery.fullpage.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- endinject-->
+    <script src="js/index.js"></script>
+    <div class="container">
+      <div id="fullpage">
+        <div class="section">
+          <div class="row">
+            <div class="h-center">
+              <div class="col-lg-12">
+                <div class="question">You should care about officials and offices in your area</div>
+                <form id="address-form" autocomplete="off">
+                  <div id="address-input" class="input-group">
+                    <input placeHolder="Please enter your address" type="text" autocomplete="street-address" class="form-control"><span class="input-group-btn">
+                      <button class="btn btn-default">Go!</button></span>
+                  </div>
+                  <div id="include-offices-wrap" class="check-box">
+                    <label>
+                      <input type="checkbox"><span>Show me information about offices as well</span>
+                    </label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="address-section" class="section">
+          <div id="section2-container">
+            <div class="row">
+              <div class="col-md-12 question">What are the office levels that you want to know more about?</div>
+              <div class="col-md-12"><span>Press 
+                  <image src="img/keyboard-a.png"> </image></span><span>to select all.</span></div>
+            </div>
+            <div id="level-grid" class="row">
+              <div class="level col-md-6">
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">administrative area 1</div>
+              </div>
+              <div class="level col-md-6">
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">administrative area 2</div>
+              </div>
+              <div class="level col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">country</div>
+              </div>
+              <div class="level col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">international </div>
+              </div>
+              <div class="level col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">locality</div>
+              </div>
+              <div class="level col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">regional</div>
+              </div>
+              <div class="level col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">special</div>
+              </div>
+              <div class="level col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">subLocality 1</div>
+              </div>
+              <div class="level col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">subLocality 2</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="h-center">
+                <div class="button-wrap">
+                  <button id="levels-btn" class="btn btn-success">Next Step!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="roles-section" class="section">
+          <div id="section3-container">
+            <div class="row">
+              <div class="col-md-12 question">What are the roles of the offices you chose that you'd want to learn about?</div>
+              <div class="col-md-12"><span>Press 
+                  <image src="img/keyboard-a.png"> </image></span><span>to select all.</span></div>
+            </div>
+            <div id="role-grid" class="row">
+              <div class="role col-md-6">
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">Head Of Government</div>
+              </div>
+              <div class="role col-md-6">
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">Deputy Head Of Government</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">Head Of State</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">highestCourtJudge</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">judge</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">Government Officer</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">Legislator Lower Body</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">Legislator Upper Body</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">Executive Council</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">School Board</div>
+              </div>
+              <div class="role col-md-6"> 
+                <div class="level-icon"><img src="img/not-checked.png"></div>
+                <div class="level-content">Special Purpose Officer</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="h-center">
+                <div class="button-wrap">
+                  <button id="roles-btn" class="btn btn-success">Show me some officials</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

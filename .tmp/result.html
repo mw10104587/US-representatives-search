@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--inject:css-->
+    <link rel="stylesheet" href="/vendor/fullpage.js/dist/jquery.fullpage.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <!--endinject-->
+    <link href="css/result.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya|News+Cycle|Roboto+Condensed" rel="stylesheet">
+  </head>
+  <body>
+    <!--inject:js-->
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/react/react-with-addons.js"></script>
+    <script src="/vendor/react/react-dom.js"></script>
+    <script src="/vendor/d3/d3.js"></script>
+    <script src="/vendor/fullpage.js/dist/jquery.fullpage.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--endinject-->
+    <script src="js/result.js"></script>
+    <div id="tab">
+      <button id="officials-tab" type="button" class="btn btn-link">Officials</button><span class="include-offices">|</span>
+      <button id="offices-tab" type="button" class="btn btn-link include-offices">Offices</button>
+    </div>
+    <div id="officials-table" class="data-table"></div>
+    <div id="offices-table" class="data-table">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Office Name</th>
+            <th>Addres</th>
+            <th>levels</th>
+            <th>roles</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="more-officials-wrap">
+      <button type="button" class="btn btn-link">Show me more</button>
+    </div>
+    <div id="more-offices-wrap">
+      <div class="center">
+        <button type="button" class="btn btn-link">Show me more</button>
+      </div>
+    </div>
+    <div id="back-wrap">
+      <div class="center">
+        <button type="button" class="btn btn-info">Do Another Search</button>
+      </div>
+    </div>
+  </body>
+</html>
