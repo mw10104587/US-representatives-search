@@ -1,4 +1,4 @@
-# Civic API
+# Google civil API Project
 This is a web app that uses the Google Civic API to show people the offices and officials in their address. 
 
 # Design
@@ -31,12 +31,9 @@ The images of different officials were of different size, I used the most common
 To add style to the page, I used some web fonts provided by Google.
 
 
-
-
-
 ## Problems Encountered
 #### Listener to form instead of the input
-In the first page of the application, I wanted to trigger nextpage after user pressed Enter (after users fill in the address). At first, I set the keydown listener on the <input> element. However, the page always reloads itself and cleans up the form. After some Googling, the problem was setting the listener on the wrong element. Instead of setting the listener on the input, we should set it on the <form> element. This inlcudes both 1. pressing Enter while focusing on the input. 2. Clicking the `Go!` button with mouse.
+In the first page of the application, I wanted to trigger nextpage after user pressed Enter (after users fill in the address). At first, I set the keydown listener on the `<input>` element. However, the page always reloads itself and cleans up the form. After some Googling, the problem was setting the listener on the wrong element. Instead of setting the listener on the input, we should set it on the `<form>` element. This inlcudes both 1. pressing Enter while focusing on the input. 2. Clicking the `Go!` button with mouse.
 
 
 
