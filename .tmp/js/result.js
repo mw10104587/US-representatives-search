@@ -335,3 +335,9 @@ function backToSearchPage(){
 	window.location = 'index.html';
 }
 
+function imgError(image){
+	image.onerror = '';
+	image.src = 'img/avatar.png';
+	return true;
+}
+

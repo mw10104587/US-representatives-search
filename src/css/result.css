@@ -8,6 +8,7 @@
 
 #officials-table{
 	display: table;
+	width: 100%;
 }
 
 .official-pic{
@@ -27,6 +28,9 @@
 .official-pic-wrap{
 	display: table;
 	float: left;
+
+	background-image: url(../img/avatar.png);
+	background-size: cover;
 }
 
 .official-info{

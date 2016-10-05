@@ -242,9 +242,26 @@ function queryAndProcess(){
 	// address=50+West+34th+Street&includeOffices=true&levels=country&levels=subLocality1&levels=regional&levels=administrativeArea1&levels=administrativeArea2&roles=judge&roles=deputyHeadOfGovernment&roles=schoolBoard&roles=executiveCouncil&roles=headOfGovernment&fields=divisions%2Ckind%2CnormalizedInput%2Coffices%2Cofficials&key={YOUR_API_KEY}
 
 	var multiple_parameters = ['levels', 'roles'];
+	var all_params = {
+		'levels': ["administrativeArea1", "administrativeArea2", "country", "international", "locality", "regional", "special", "subLocality1", "subLocality2"],
+		'roles': ["deputyHeadOfGovernment", "executiveCouncil", "governmentOfficer", "headOfGovernment", "headOfState", "highestCourtJudge", "judge", "legislatorLowerBody", "legislatorUpperBody", "schoolBoard", "specialPurposeOfficer"]
+	};
+
 	for (mp in multiple_parameters){
 		var key = multiple_parameters[mp];
-		var values = localStorage.getItem(key).split(",");
+		var value = localStorage.getItem(key);
+		console.log(value);
+		var values;
+		if (value){
+			values = value.split(",");
+			console.log(values);
+		}else{
+			console.log('no data of ' + multiple_parameters[mp] + " given!");
+			console.log('all parameters would be passed in!');
+
+			values = all_params[multiple_parameters[mp]];
+			// continue
+		}
 		for (v in values){
 			url = url + "&" + key + "=" + values[v];
 		}
@@ -257,10 +274,25 @@ function queryAndProcess(){
 
 	$.get(url, function(e){
 		localStorage.setItem('result', JSON.stringify(e));
-		console.log(localStorage.getItem("result"));
+		// console.log(localStorage.getItem("result"));
 
-		// redirect to new page.
-		window.location = 'result.html';
+		// console.log(e);
+
+		if (!('officials' in e) && (localStorage.getItem('levels') && (localStorage.getItem('roles') )) ){
+
+			// show the error message in the levels page and roles page
+			// ask the user to add more fields in it. 
+			$('.not-enough-input').css({display: 'block'});
+			// redirect user back to levels page
+			$.fn.fullpage.moveTo(2, 0);
+			
+			return 
+		}else{
+			// redirect to new page.
+			window.location = 'result.html';	
+		}
+
+		
 
 	});
 

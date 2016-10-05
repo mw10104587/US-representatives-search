@@ -12,6 +12,12 @@
 	margin-bottom: 15px;
 }
 
+.not-enough-input{
+	/*color: red;*/
+	padding: 5px 10px;
+	display: none;
+}
+
 
 /* Section 1 */
 
@@ -76,6 +82,7 @@
 #levels-btn{
 	width: 130px;
 }
+
 
 
 
