@@ -106,15 +106,6 @@ The data returned by the server often have missing values for phones, address, l
 
 
 
-## Testing
-tested with:
-2313 Fairmount Ave, Philadelphia, PA 19130
-1450 Pennsylvania Ave NW, Washington
-1714 Dixie Hwy, Louisville, KY 40210
-924 W Colfax Ave #101, Denver, CO 80204
-
-
-
 ## Future improvements
 1. It would be better if the tabs in the result page has an active and un-active state. Users could identify which page they're watching right away.
 2. Catch error when no result were returned or, internet problem.
@@ -123,9 +114,12 @@ tested with:
 5.
 
 
-## Test Address
-1. more than 10 officials 
-207 Willey St, Morgantown, WV 26505, United States
+## Tested Address
+I randomly picked them from Google map.
+- 207 Willey St, Morgantown, WV 26505, United States
+- 2313 Fairmount Ave, Philadelphia, PA 19130
+- 1450 Pennsylvania Ave NW, Washington
+- 1714 Dixie Hwy, Louisville, KY 40210
+- 924 W Colfax Ave #101, Denver, CO 80204
 
-2. 
 
