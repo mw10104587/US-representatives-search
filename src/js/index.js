@@ -2,6 +2,8 @@
 
 // not the best way to do it...
 var API_KEY = "AIzaSyBqWr2Jr7lJvv3MYR4zdftl7Wcp7XuGY4g";
+// var DEV_MODE = true;
+var DEV_MODE = false;
 
 
 $(document).ready(function(){
@@ -39,6 +41,12 @@ $(document).ready(function(){
 		address_done();
 		return false;
 	});
+
+
+	if (DEV_MODE){
+		$("#address-input input").val('1263 Pacific Ave. Kansas City KS');
+	}
+
 
 
 	/**************************/
@@ -237,10 +245,7 @@ function queryAndProcess(){
 	// always include offices
 	url = url + '&includeOffices=true'
 
-
-	// add api key to it.
 	// address=50+West+34th+Street&includeOffices=true&levels=country&levels=subLocality1&levels=regional&levels=administrativeArea1&levels=administrativeArea2&roles=judge&roles=deputyHeadOfGovernment&roles=schoolBoard&roles=executiveCouncil&roles=headOfGovernment&fields=divisions%2Ckind%2CnormalizedInput%2Coffices%2Cofficials&key={YOUR_API_KEY}
-
 	var multiple_parameters = ['levels', 'roles'];
 	var all_params = {
 		'levels': ["administrativeArea1", "administrativeArea2", "country", "international", "locality", "regional", "special", "subLocality1", "subLocality2"],
@@ -259,7 +264,8 @@ function queryAndProcess(){
 			console.log('no data of ' + multiple_parameters[mp] + " given!");
 			console.log('all parameters would be passed in!');
 
-			values = all_params[multiple_parameters[mp]];
+			// values = all_params[multiple_parameters[mp]];
+			values = [];
 			// continue
 		}
 		for (v in values){
@@ -268,15 +274,30 @@ function queryAndProcess(){
 
 	}
 
+	// add api key to it.
 	url = url + '&key=' + API_KEY;
-	// console.log(url);
-	// url = encodeURIComponent(url)
+
+	console.log(url);
 
 	$.get(url, function(e){
-		localStorage.setItem('result', JSON.stringify(e));
-		// console.log(localStorage.getItem("result"));
 
-		// console.log(e);
+		// IF DEV MODE
+		// we fake a lot more office data here
+		console.log(e['officials']);
+		console.log(e);
+
+
+		if (DEV_MODE){
+			e['officials'] = e['officials'].concat(e['officials'].slice());
+			e['officials'] = e['officials'].concat(e['officials'].slice());	
+			e['offices'] = e['offices'].concat(e['offices'].slice());
+			e['offices'] = e['offices'].concat(e['offices'].slice());
+		} 
+
+		console.log(e['officials']);
+
+		// save it for next page
+		localStorage.setItem('result', JSON.stringify(e));
 
 		if (!('officials' in e) && (localStorage.getItem('levels') && (localStorage.getItem('roles') )) ){
 
@@ -285,7 +306,7 @@ function queryAndProcess(){
 			$('.not-enough-input').css({display: 'block'});
 			// redirect user back to levels page
 			$.fn.fullpage.moveTo(2, 0);
-			
+
 			return 
 		}else{
 			// redirect to new page.

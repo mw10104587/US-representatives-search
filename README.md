@@ -30,11 +30,17 @@ On the other hand, if the query that user input doesn't get back any result, I w
 
 
 
-
 ### Result page
+
+The basic requirement for this project is a single page application. However, I think the interactive selection process and the action of displaying data should be presented in different page. This gives people a sense of, going into the next step, and now it's time to take a good look about what I've searched for. The downside is that it would require a little more clicking to redirect the user back to the query parameter page.
+
 In the result page, while offices being requested, I have two tabs, one for offices as a table, the other showing two columns view of officials. I put the officials tab as default tab and users would need to click on the other one to see offices. The reason is that I think people are more visual, they would be more interested in the face of the politicians.
 
 For officials, I used React to render the same structure of elements only by passing different data. It gains usability of my code. To add a little more visual to the page, I added social media icons in front of their social media ID. 
+
+I am not sure whether it's my problem or not, but I have yet found an address that returns more than 10 offices even if I selected all of the parameters... however, I used fake data to develop this function. By setting a global variable `var DEV_MODE` as `true`, we will copy the data to three times of the original length, including offices and officials.
+
+According to the requirement, we are suppose to provide our user with a function that shows them ten more. Instead of removing the original ones, I personally prefer to append it at the bottom of the original list(both for offices and officials). My opinion is that in this kind of list that show a series of sparse information, there is no need to provide this kind of pagination design. For example, if I am looking at some images, that does make sense to have its own page so that users can have a comprehensive experience and a space to enjoy this image and only the image. However, I don't think we have this need for showing this kind of data. Also, we all know that nowadays, people scroll way much more than clicking on buttons.
 
 
 **REF:** 
@@ -76,8 +82,8 @@ I use **bower** to install up-to-date packages and use **gulp-inject** to includ
 
 
 ## To Do List
-1. Add detail on each options
-3. Implement the show me more function for offices?
+1. Add detail on each options, by doing so I think people can know more about the levels and roles that they are picking...
+2.
 
 ## Future improvements
 1. It would be better if the tabs in the result page has an active and un-active state. Users could identify which page they're watching right away.

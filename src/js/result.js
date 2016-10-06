@@ -9,7 +9,7 @@ var Officials = React.createClass({
 
   render: function render() {
 
-  	// console.log(this.props.data);
+  	console.log(this.props.data);
 
 	var officials = [];
   	for(var i = 0; i < this.props.data["officials"].length; i++){
@@ -41,7 +41,7 @@ var Official = React.createClass({
 
   	var info = this.props.info;
   	var img_url = info['photoUrl'];
-  	// console.log(this.props.info);
+  	console.log(this.props.info);
   	var official_style = {}
 
   	if (!this.props.display) official_style['display'] = 'none';
@@ -66,7 +66,8 @@ var OfficialInfo = React.createClass({
 		var party = this.props.info.party;
 		// var title = 
 		// var office = 
-		var address = this.props.info.address;
+		var address = [];
+		if('address' in this.props.info) address = this.props.info.address;
 		var phones = this.props.info.phones;
 		var channels = this.props.info.channels;
 
@@ -103,12 +104,23 @@ var Address = React.createClass({
 	displayName: 'Address',
 
 	render: function render(){
-		var render_address = this.props.address[0]['line1']
 
-		if ("line2" in this.props.address[0]){
-			render_address = render_address + " "+ this.props.address[0]["line2"];
-			// console.log(this.props.address);
+		var render_address;
+		if (this.props.address.length > 0){
+			
+			render_address = this.props.address[0]['line1'];
+
+			if ("line2" in this.props.address[0]){
+				render_address = render_address + " "+ this.props.address[0]["line2"];
+				// console.log(this.props.address);
+			}
+
+		}else{
+			render_address = '';
 		}
+		
+
+		
 		return React.createElement("div", {className: "address"}, 
 			React.createElement("span", null, render_address.toLowerCase() ));
 
@@ -155,7 +167,7 @@ var SocialMedia = React.createClass({
 		var social_media = this.props.channel['type'];
 		var sm_id = this.props.channel['id'];
 
-		console.log(social_media);
+		// console.log(social_media);
 
 		return React.createElement("div", {className: 'social-media'}, 
 			React.createElement("div", {className: 'social-media-wrap'},
@@ -189,12 +201,22 @@ var Offices = React.createClass({
 		for (od in this.props.data['offices']){
 			// loop through the roles
 
-			for(var i = 0; i < this.props.data['offices'][od]['roles'].length; i++){
-				for(var j = 0; j < this.props.data['offices'][od]['levels'].length; j++){
+			office_data = this.props.data['offices'][od];
+			var office_roles = [''];
+			if ('roles' in office_data ){
+				office_roles = office_data['roles'];
+			}
+			var office_levels = [''];
+			if('levels' in office_data){
+				office_levels = office_data['levels'];
+			}
+
+			for(var i = 0; i < office_roles.length; i++){
+				for(var j = 0; j < office_levels.length; j++){
 					offices_data.push({
 						'name': this.props.data['offices'][od]['name'],
-						'role': this.props.data['offices'][od]['roles'][i],
-						'level': this.props.data['offices'][od]['levels'][j]
+						'role': office_roles[i],
+						'level': office_levels[j]
 					});
 				}
 			}
@@ -208,7 +230,7 @@ var Offices = React.createClass({
 
 		var offices = [];
 		for( o in offices_data){
-			offices.push(React.createElement(Office, {office: offices_data[o], key: o}));
+			offices.push(React.createElement(Office, {office: offices_data[o], key: o, idx: o}));
 		}
 
 		return React.createElement("table", {className: 'table table-hover'}, 
@@ -229,7 +251,7 @@ var Office = React.createClass({
 	render: function render(){
 
 		var office_data = this.props.office;
-		console.log(office_data);
+		// console.log(office_data);
 
 		var office_name = office_data['name'];
 		// var office_addres = office_data['address'];
@@ -237,7 +259,13 @@ var Office = React.createClass({
 
 		var office_level = office_data['level'];
 
-		return React.createElement('tr', null, 
+		// style for hiding and showing rows
+		var _style = {display: 'table-row'}
+		if (this.props.idx >= 10){
+			_style = {display: 'none'};
+		}
+
+		return React.createElement('tr', {style: _style}, 
 					React.createElement('th', null, office_name),
 					React.createElement('th', null, office_level),
 					React.createElement('th', null, office_role)
@@ -305,7 +333,7 @@ $(document).ready(function(){
 			return $(this).css('display') == 'none';
 		}).slice(0, 10).css({display: 'block'});
 
-		var more_undisplayed_officials = $('#more-officials-wrap .official-wrap')
+		var more_undisplayed_officials = $('#officials-table .official-wrap')
 											.filter(function(){ return $(this).css('display') == 'none'});
 
 
@@ -316,7 +344,22 @@ $(document).ready(function(){
 
 	});
 
+	$('#more-offices-wrap button').click(function(){
 
+		// find the next ten not displayed rows and display them
+		$('#offices-table>table>tbody>tr').filter(function(){
+			return $(this).css('display') == 'none';
+		}).slice(0, 10).css({display: 'table-row'});
+
+		var more_undisplayed_offices = $('#offices-table>table>tbody>tr').filter(function(){
+			return $(this).css('display') == 'none';
+		});
+
+		if(more_undisplayed_offices.length == 0){
+			$('#more-offices-wrap button').remove();
+		} 
+
+	});
 
 	$("#back-wrap button").click(function(){
 		backToSearchPage();
