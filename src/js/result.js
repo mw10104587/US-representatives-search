@@ -1,6 +1,7 @@
 // a global variable for this page, so we can keep track whether we're showing data for
 // offices or official. True: officials; False: offices
 var showing_officials = true;
+var DEV_MODE = false;
 
 
 // define some reusable components for showing the officials
@@ -9,7 +10,7 @@ var Officials = React.createClass({
 
   render: function render() {
 
-  	console.log(this.props.data);
+  	if (DEV_MODE) console.log(this.props.data);
 
 	var officials = [];
   	for(var i = 0; i < this.props.data["officials"].length; i++){
@@ -41,7 +42,7 @@ var Official = React.createClass({
 
   	var info = this.props.info;
   	var img_url = info['photoUrl'];
-  	console.log(this.props.info);
+  	if (DEV_MODE) console.log(this.props.info);
   	var official_style = {}
 
   	if (!this.props.display) official_style['display'] = 'none';
@@ -68,7 +69,11 @@ var OfficialInfo = React.createClass({
 		// var office = 
 		var address = [];
 		if('address' in this.props.info) address = this.props.info.address;
-		var phones = this.props.info.phones;
+		
+		var phones = [''];
+		if('phones' in this.props.info) phones = this.props.info.phones;
+		
+
 		var channels = this.props.info.channels;
 
 		return React.createElement("div", {className: "official-info"}, 
@@ -112,7 +117,6 @@ var Address = React.createClass({
 
 			if ("line2" in this.props.address[0]){
 				render_address = render_address + " "+ this.props.address[0]["line2"];
-				// console.log(this.props.address);
 			}
 
 		}else{
@@ -133,7 +137,6 @@ var Phones = React.createClass({
 	displayName: 'Phones',
 
 	render: function render(){
-		// console.log(this.props.phones);
 		var render_phones = this.props.phones[0];
 		return React.createElement('div', {className:'phone'}, render_phones);
 	}

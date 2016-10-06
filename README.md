@@ -29,7 +29,6 @@ If the user didn't select any of the levels, I will assume they are not really s
 On the other hand, if the query that user input doesn't get back any result, I will redirect our users to the parameter page and ask them to add more input to their query. The error message will be styled by `Bootstrap` by using the `<p class="bg-gander">`, which will definitely catch users eye.
 
 
-
 ### Result page
 
 The basic requirement for this project is a single page application. However, I think the interactive selection process and the action of displaying data should be presented in different page. This gives people a sense of, going into the next step, and now it's time to take a good look about what I've searched for. The downside is that it would require a little more clicking to redirect the user back to the query parameter page.
@@ -81,9 +80,40 @@ I have three main directories including
 I use **bower** to install up-to-date packages and use **gulp-inject** to include them into header of my html files.
 
 
-## To Do List
-1. Add detail on each options, by doing so I think people can know more about the levels and roles that they are picking...
-2.
+## Issues
+#### API Design
+The API tested [here](https://developers.google.com/civic-information/docs/v2/representatives/representativeInfoByAddress#try-it) has different result for 
+1. selecting all the values for roles and levels
+and
+2. not selecting any of the values for roles and levels.
+
+In detail, when I send a request to the server with 
+```
+GET https://www.googleapis.com/civicinfo/v2/representatives?address=1263+Pacific+Ave.+Kansas+City+KS&includeOffices=true&levels=administrativeArea1&levels=administrativeArea2&levels=country&levels=international&levels=locality&levels=regional&levels=special&levels=subLocality1&levels=subLocality2&roles=deputyHeadOfGovernment&roles=executiveCouncil&roles=governmentOfficer&roles=headOfGovernment&roles=headOfState&roles=highestCourtJudge&roles=judge&roles=legislatorLowerBody&roles=legislatorUpperBody&roles=schoolBoard&roles=specialPurposeOfficer&key={YOUR_API_KEY}
+```
+
+and with
+
+```
+GET https://www.googleapis.com/civicinfo/v2/representatives?address=1263+Pacific+Ave.+Kansas+City+KS&includeOffices=true&key={YOUR_API_KEY}
+```
+
+gives me a different result. I am not sure the intention of this, but I think it's because some of the officials doesn't belong to any level. I decided to respect the original design of the API, and thus if the user didn't select anything, I will show all officials given back by the server.
+
+#### Inconsistent Data 
+The data returned by the server often have missing values for phones, address, levels and roles. At first I assumed to have all of them values, but the javascript starts to be killed by running into undefined objects. I added checking before accessing values to solve the problem.
+
+
+
+
+## Testing
+tested with:
+2313 Fairmount Ave, Philadelphia, PA 19130
+1450 Pennsylvania Ave NW, Washington
+1714 Dixie Hwy, Louisville, KY 40210
+924 W Colfax Ave #101, Denver, CO 80204
+
+
 
 ## Future improvements
 1. It would be better if the tabs in the result page has an active and un-active state. Users could identify which page they're watching right away.

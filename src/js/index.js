@@ -277,15 +277,12 @@ function queryAndProcess(){
 	// add api key to it.
 	url = url + '&key=' + API_KEY;
 
-	console.log(url);
+	if (DEV_MODE) console.log(url);
 
 	$.get(url, function(e){
 
 		// IF DEV MODE
 		// we fake a lot more office data here
-		console.log(e['officials']);
-		console.log(e);
-
 
 		if (DEV_MODE){
 			e['officials'] = e['officials'].concat(e['officials'].slice());
@@ -294,7 +291,7 @@ function queryAndProcess(){
 			e['offices'] = e['offices'].concat(e['offices'].slice());
 		} 
 
-		console.log(e['officials']);
+		if (DEV_MODE) console.log(e['officials']);
 
 		// save it for next page
 		localStorage.setItem('result', JSON.stringify(e));
